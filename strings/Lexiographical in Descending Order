@@ -1,0 +1,48 @@
+question:The program must accept N string values as the input. 
+          The program must print the N string values sorted lexicographically in descending order as the output. 
+          Note: All the alphabets are lowercase in each string. 
+          Boundary Condition(s): 1 <= N <= 50 1 <= Length of each string <= 1000 
+          Input Format: The first line contains the integer N. The next N lines each contain a string. 
+          Output Format: The first N lines each contain a string after sorted lexicographically in descending order. 
+          Example Input/Output 1: Input: 4 project elephant tiger time 
+          Output: time tiger project elephant 
+          Example Input/Output 2: Input: 5 orange watermelon pineapple lemon strawberry 
+          Output: watermelon strawberry pineapple orange lemon
+solution:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    int a;
+    scanf("%d", &a);
+    char b[a][1001]; // Array to hold the strings
+    char temp[1001]; // Temporary array to hold a string during swapping
+    int i = 0;
+
+    // Read strings
+    while (a != 0) {
+        scanf("%s", b[i]);
+        i++;
+        a--;
+    }
+
+    // Sort strings in descending order
+    for (int k = 0; k < i - 1; k++) {
+        for (int j = k + 1; j < i; j++) {
+            if (strcmp(b[k], b[j]) < 0) {
+                // Swap strings
+                strcpy(temp, b[k]);
+                strcpy(b[k], b[j]);
+                strcpy(b[j], temp);
+            }
+        }
+    }
+
+    // Print sorted strings
+    for (int k = 0; k < i; k++) {
+        printf("%s\n", b[k]);
+    }
+
+    return 0;
+}
