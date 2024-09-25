@@ -1,0 +1,52 @@
+question:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+solution:#include <stdio.h>
+#include<string.h>
+int main() {
+int n,n1,k=0;
+printf("Enter the number:");
+scanf("%d",&n);
+printf("Enter the number n1:");
+scanf("%d",&n1);
+float arr[n],arr1[n1],arr2[n+n1];
+for(int i=0;i<n;i++){
+    scanf("%f ",&arr[i]);
+    arr2[k++]=arr[i];
+}
+for(int i=0;i<n1;i++){
+    scanf("%f ",&arr1[i]);
+    arr2[k++]=arr1[i];
+}
+for(int i=0;i<k-1;i++){
+    for(int j=i+1;j<k;j++){
+        if(arr2[i]<arr2[j]){
+            int temp=arr2[i];
+            arr2[i]=arr2[j];
+            arr2[j]=temp;
+        }
+    }
+}
+if(k%2!=0){
+    printf("The result is:%f",arr2[k/2]);
+}
+else{
+    printf("The result is:%f",(arr2[k/2]+arr2[(k/2)-1])/2.0);
+}
+}
